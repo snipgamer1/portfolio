@@ -1,0 +1,58 @@
+---
+import Github from '@icons/Github.astro'
+import LinkedIn from '@icons/LinkedIn.astro'
+---
+
+<section
+  class="min-h-[500px] flex items-center justify-evenly w-full flex-col-reverse sm:flex-row
+max-sm:pt-16 max-sm:relative sm:mt-12 px-5 sm:px-24"
+>
+  <div class="flex flex-col justify-center items-center space-y-6">
+    <h1 class="font-normal font-knewave text-6xl">Jesús Flores</h1>
+    <p class="text-gray-200 text-2xl font-semibold">Desarrollador de software</p>
+    <p class="text-lg">
+      Desarrollador de software con enfoque en Frontend y experiencia en proyectos
+      tecnológicos innovadores durante mi formación universitaria. He liderado
+      la creación de plataformas de impacto social y empresarial, integrando
+      metodologías ágiles y estrategias de negocio. Mi trayectoria incluye el
+      diseño de aplicaciones escalables.
+    </p>
+
+    <div class="flex gap-4 items-center">
+      <a href="https://github.com/snipgamer1" class="hover:scale-110">
+        <Github class="h-8 w-8" />
+      </a>
+      <a
+        href="https://www.linkedin.com/in/jesusfloresreyes/"
+        class="hover:scale-110"
+      >
+        <LinkedIn class="fill-white h-8 w-8" />
+      </a>
+      <button
+        class="group relative inline-flex h-8 items-center justify-center overflow-hidden rounded-md border-2 border-[#2eff5457] px-2 lg:px-6 font-medium text-neutral-200 transition hover:scale-110"
+        ><span>Descargar CV</span><div
+          class="absolute inset-0 flex h-full w-full justify-center [transform:skew(-12deg)_translateX(-100%)] group-hover:duration-1000 group-hover:[transform:skew(-12deg)_translateX(100%)]"
+        >
+          <div class="relative h-full w-8 bg-white/20"></div>
+        </div></button
+      >
+    </div>
+  </div>
+  <img
+    src="/FotoGIt-removebg-preview.png"
+    alt="Foto de perfil"
+    class="IMG h-60 sm:w-96 sm:h-96 "
+  />
+</section>
+
+<style>
+  .IMG {
+    transform: rotateY(180deg);
+    /* background: radial-gradient(
+      48.42% 48.42% at 49.41% 51.58%,
+      rgba(18, 237, 95, 0.34) 0%,
+      rgba(0, 0, 0, 0) 100%
+    ); */
+    filter: drop-shadow(0px 20px 20px rgba(72, 225, 125, 0.34));
+  }
+</style>

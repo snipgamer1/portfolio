@@ -1,0 +1,111 @@
+---
+import Tecnologies from '@components/Tecnologies.astro'
+import { PROJECTS } from '@lib/Data.ts'
+---
+
+<section id="Projects" class="mt-20 overflow-x-hidden px-5 sm:px-24">
+  <h1
+    id="titles"
+    class="font-bold font-knewave text-4xl md:text-7xl mb-14 tracking-wide"
+  > 
+    Proyectos
+  </h1>
+  <div>
+    {
+      PROJECTS.map(
+        ({ name, subtitle, description, link, technologies, image }, index) => (
+          <div
+            id={`project-${index}`}
+            class="flex mb-28 flex-col lg:odd:flex-row lg:even:flex-row-reverse gap-16 items-center justify-center"
+          >
+            <div id={`content-project-${index}`} class="flex flex-col">
+              <div class="flex gap-3 items-center">
+                <p class="text-3xl font-knewave">{name}</p>
+                <hr class="border-2 border-white/30 h-3/4" />
+                <a href={link} target="_blank" rel="noopener noreferrer">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-square-arrow-out-up-right"
+                  >
+                    <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6M21 3l-9 9M15 3h6v6" />
+                  </svg>
+                </a>
+              </div>
+
+              <span
+                data-mce-style="color: #a5a5a5; font-family: Karla, sans-serif;"
+                style="color: #a5a5a5; font-family: Karla, sans-serif;"
+              >
+                {subtitle}
+              </span>
+
+              <div class="mt-2">
+                {description.map((desc) => (
+                  <p class="mt-3">{desc}</p>
+                ))}
+              </div>
+              <a
+                class="mt-5 hover:underline"
+                data-font="font_n9wcytiar"
+                href={link}
+                target="_self"
+              >
+                Ver Proyecto ➞
+              </a>
+              <ul class="mt-3 ">
+                {technologies.map(({ name, icon: Icon }) => (
+                  <Tecnologies name={name} icon={Icon} />
+                ))}
+              </ul>
+            </div>
+            <img
+              id={`img-project-${index}`}
+              src={image}
+              alt="StaffConnect"
+              class="rounded-xl w-[500px] h-[280px] md:max-w-[600px] md:w-full md:h-[384px] xl:rounded-xl object-contain "
+            />
+          </div>
+        )
+      )
+    }
+  </div>
+</section>
+
+<script>
+  import { animate, scroll } from 'motion'
+  import { $ } from '@lib/dom-selector'
+  import { PROJECTS } from '@lib/Data'
+
+  const animateScroll = (
+    selector: string,
+    translateValue: number[],
+    scrollOptions: object
+  ) => {
+    scroll(animate(selector, { translate: translateValue }), scrollOptions)
+  }
+
+  PROJECTS.forEach((_, index) => {
+    const contentProject = `#content-project-${index}`
+    const imgProject = `#img-project-${index}`
+
+    const translateValue = index % 2 === 0 ? [-100, 0] : [100, 0]
+
+    const scrollOptions = {
+      target: $(contentProject),
+      offset: ['start end', 'end end']
+    }
+    animateScroll(contentProject, translateValue, scrollOptions)
+    animateScroll(
+      imgProject,
+      translateValue.map((value) => -value),
+      scrollOptions
+    )
+  })
+</script>

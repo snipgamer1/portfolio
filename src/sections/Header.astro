@@ -1,0 +1,89 @@
+---
+const pages = [
+  { name: 'Experiencia', href: '#Experience' },
+  { name: 'Educación', href: '#Education' },
+  { name: 'Proyectos', href: '#Projects' },
+  { name: 'Contacto', href: '#Contact' }
+]
+---
+
+<header
+  class="flex fixed mx-auto sm:top-5 inset-x-0 p-4 sm:py-2 items-center z-10
+   bg-[#0f172a] sm:border sm:border-gray-500 sm:rounded-3xl sm:fixed sm:gap-8 sm:w-fit max-sm:justify-between"
+>
+  <a href="/" class="h-10 flex items-center">
+    <h1 class="text-lg font-thin text-nowrap">{'<Snip />'}</h1>
+  </a>
+  <nav
+    class="nav w-full left-0 text-base text-nowrap h-full overflow-y-hidden max-sm:hidden max-sm:top-0 max-sm:py-6 max-sm:pt-24 max-sm:absolute max-sm:text-2xl max-sm:h-screen max-sm:bg-[#0a0a0a94]"
+  >
+    <ul
+      class="flex flex-col items-center w-full gap-6 font-sans
+    max-sm:space-y-4 sm:flex-row max-sm:font-bold"
+    >
+      {
+        pages.map(({ name, href }, key) => (
+          <a id={`nav-link-${key}`} href={href} class="menu">
+            {name}
+          </a>
+        ))
+      }
+    </ul>
+  </nav>
+  <button class="openMenu sm:hidden z-10 cursor-pointer">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="32"
+      height="32"
+      fill="none"
+      stroke="#000"
+      viewBox="0 0 24 24"
+      ><path
+        stroke="#fff"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="3"
+        d="M4 6h16M4 12h16M4 18h16"></path></svg
+    >
+  </button>
+</header>
+
+<style>
+  .menu:hover {
+    background: radial-gradient(50% 50%, #ffffff6a 0%, #9990 100%);
+  }
+</style>
+
+<script>
+  import { $ } from '@lib/dom-selector'
+
+  // Open and close menu with button
+  const buttonMenu = $('.openMenu')
+  const nav = $('.nav')
+
+  buttonMenu?.addEventListener('click', () => {
+    nav?.classList.toggle('max-sm:hidden')
+  })
+
+  //cuando vaya al link haga un scroll suave
+  const linkscroll = document.querySelectorAll('a[href^="#"]')
+  linkscroll.forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault()
+      const href = link.getAttribute('href')
+      const offsetTop = document.querySelector(href)?.offsetTop
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth'
+      })
+    })
+  })
+
+  // Close menu when click on a link
+  const links = document.querySelectorAll('.menu')
+  links.forEach((link) => {
+    link.addEventListener('click', () => {
+      nav?.classList.add('max-sm:hidden')
+    })
+  })
+</script>

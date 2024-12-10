@@ -1,0 +1,36 @@
+---
+interface Props {
+	description: string;
+	title: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+<style is:global>
+	@font-face {
+		font-family: "Knewave";
+		src: url("/fonts/Knewave-Regular.ttf");
+		font-style: normal;
+	}
+
+
+	html {
+		font-family: system-ui, sans-serif;
+		background: rgb(15 23 42);
+		color: #fff;
+	}
+</style>

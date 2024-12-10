@@ -1,0 +1,127 @@
+---
+import Tecnologies from '@components/Tecnologies.astro'
+import { EXPERIENCE } from '@lib/Data.ts'
+---
+
+<section id="Experience" class="mt-10 px-5 sm:px-24">
+  <h1
+    id="titles"
+    class="font-bold font-knewave text-5xl flex md:text-8xl mb-14 tracking-wide transform rotate-2"
+  >
+    Experiencia
+  </h1>
+
+  {
+    EXPERIENCE.map(
+      ({ title, company, description, date, tecnologies, link }, index) => (
+        <li class="grid w-full grid-cols-[20px,1fr] grid-rows-[auto,1fr] items-start justify-start gap-x-2 gap-y-7 sm:gap-x-7 lg:gap-14 ease transition-opacity duration-300">
+          <div class="mt-4 flex size-full flex-col items-center">
+            <div class="flex aspect-square items-center justify-center p-3">
+              <span class="inline-block size-2 rounded-full bg-white lg:size-3" />
+            </div>
+            <div
+              id={`entry-track-${index}`}
+              class="opacity-1 relative mt-8 h-full w-[4px] rounded-full bg-[#292524]  lg:w-[7px]"
+            >
+              <div
+                id={`progress-${index}`}
+                class="progress absolute w-full rounded-full"
+              />
+            </div>
+          </div>
+
+          <div
+            id={`entry-content-${index}`}
+            class="opacity-0 bg-amber-50/10 hover:bg-amber-50/15 p-10 rounded-xl transition-all duration-1000 ease-in-out"
+          >
+            <a href={link}>
+              <h1 class="font-bold text-3xl">
+                {title} |<span class="ml">{company}</span>
+              </h1>
+              <span style="color: #a5a5a5; font-family: Karla, sans-serif;">
+                {date}
+              </span>
+              {description.map((desc) => (
+                <p class="mt-3 mb-5 text-lg sm:text-xl ">{desc}</p>
+              ))}
+              {tecnologies.map(({ name, icon: Icon }) => (
+                <Tecnologies name={name} icon={Icon} />
+              ))}
+            </a>
+          </div>
+        </li>
+      )
+    )
+  }
+</section>
+
+<style>
+  .progress {
+    transform-origin: top;
+    transform: scaleY(0);
+    background: #facc15;
+    height: 100%;
+  }
+  .progressSS {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    padding: 10px;
+    background: var(--splash);
+    color: var(--black);
+    font-size: 18px;
+    font-weight: bold;
+    width: 50px;
+    text-align: center;
+    border-radius: 5px;
+  }
+</style>
+
+<script>
+  import { scroll, timeline, animate } from 'motion'
+  import { $ } from '@lib/dom-selector'
+  import { EXPERIENCE } from '@lib/Data.ts'
+
+  EXPERIENCE.forEach((_, index) => {
+    const sequence = [
+      [`#entry-track-${index}`, { opacity: 1 }, { duration: 1 }],
+      [`#entry-content-${index}`, { opacity: 1 }, { duration: 2.5 }]
+    ]
+
+    const onScroll = timeline(sequence)
+
+    scroll(onScroll, {
+      target: $(`#entry-content-${index}`),
+      offset: ['center end', 'end end']
+    })
+
+    const scrollOptions = {
+      target: $(`#entry-content-${index}`),
+      offset: ['center end', '-150px']
+    }
+
+    scroll(
+      animate(`#progress-${index}`, {
+        scaleY: [0, 1]
+      }),
+      scrollOptions
+    )
+  })
+  const optionsTitle = {
+    target: $('#Experience'),
+    offset: ['-400px', '50px']
+  }
+
+  // scroll(
+  //   animate('#titles', {
+  //     transform: 'translateX(80px)'
+  //   }),
+  //   optionsTitle
+  // )
+
+  // const progressSS = document.querySelector(".progressSS");
+  // scroll(
+  //   ({ y }) => (progressSS.innerHTML = y.progress.toFixed(2)),
+  //   scrollOptions
+  // );
+</script>
