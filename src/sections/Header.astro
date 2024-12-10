@@ -70,8 +70,10 @@ const pages = [
   linkscroll.forEach((link) => {
     link.addEventListener('click', (e) => {
       e.preventDefault()
-      const href = link.getAttribute('href')
-      const offsetTop = document.querySelector(href)?.offsetTop
+      const href = link.getAttribute('href') as string
+      const offsetTop = (
+        document.querySelector(href?.toString()) as HTMLElement
+      )?.offsetTop
       window.scrollTo({
         top: offsetTop,
         behavior: 'smooth'

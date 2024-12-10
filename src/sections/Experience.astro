@@ -78,7 +78,13 @@ import { EXPERIENCE } from '@lib/Data.ts'
 </style>
 
 <script>
-  import { scroll, timeline, animate } from 'motion'
+  import {
+    scroll,
+    timeline,
+    animate,
+    type TimelineSegment,
+    type ScrollOptions
+  } from 'motion'
   import { $ } from '@lib/dom-selector'
   import { EXPERIENCE } from '@lib/Data.ts'
 
@@ -88,12 +94,12 @@ import { EXPERIENCE } from '@lib/Data.ts'
       [`#entry-content-${index}`, { opacity: 1 }, { duration: 2.5 }]
     ]
 
-    const onScroll = timeline(sequence)
+    const onScroll = timeline(sequence as TimelineSegment[])
 
     scroll(onScroll, {
       target: $(`#entry-content-${index}`),
       offset: ['center end', 'end end']
-    })
+    } as ScrollOptions)
 
     const scrollOptions = {
       target: $(`#entry-content-${index}`),
@@ -104,7 +110,7 @@ import { EXPERIENCE } from '@lib/Data.ts'
       animate(`#progress-${index}`, {
         scaleY: [0, 1]
       }),
-      scrollOptions
+      scrollOptions as ScrollOptions
     )
   })
   const optionsTitle = {
