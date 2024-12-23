@@ -16,7 +16,7 @@ import { PROJECTS } from '@lib/Data.ts'
         ({ name, subtitle, description, link, technologies, image }, index) => (
           <div
             id={`project-${index}`}
-            class="flex mb-28 flex-col lg:odd:flex-row lg:even:flex-row-reverse gap-16 items-center justify-center"
+            class="flex w-full mb-28 flex-col lg:odd:flex-row lg:even:flex-row-reverse gap-16 items-center justify-center"
           >
             <div id={`content-project-${index}`} class="flex flex-col">
               <div class="flex gap-3 items-center">
@@ -40,8 +40,7 @@ import { PROJECTS } from '@lib/Data.ts'
               </div>
 
               <span
-                data-mce-style="color: #a5a5a5; font-family: Karla, sans-serif;"
-                style="color: #a5a5a5; font-family: Karla, sans-serif;"
+                class="text-[#707d9b] font-semibold"
               >
                 {subtitle}
               </span>
@@ -51,15 +50,15 @@ import { PROJECTS } from '@lib/Data.ts'
                   <p class="mt-3">{desc}</p>
                 ))}
               </div>
-              <a
+              {/* <a
                 class="mt-5 hover:underline"
                 data-font="font_n9wcytiar"
                 href={link}
                 target="_self"
               >
                 Ver Proyecto ➞
-              </a>
-              <ul class="mt-3 ">
+              </a> */}
+              <ul class="mt-3 w-full">
                 {technologies.map(({ name, icon: Icon }) => (
                   <Tecnologies name={name} icon={Icon} />
                 ))}
@@ -69,7 +68,7 @@ import { PROJECTS } from '@lib/Data.ts'
               id={`img-project-${index}`}
               src={image}
               alt="StaffConnect"
-              class="rounded-xl w-[500px] h-[280px] md:max-w-[600px] md:w-full md:h-[384px] xl:rounded-xl object-contain "
+              class=" rounded-xl w-[500px] h-[280px] md:max-w-[600px] md:w-full md:h-[384px] lg:max-w-[550px] xl:max-w-[600px] xl:rounded-xl object-contain "
             />
           </div>
         )

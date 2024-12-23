@@ -4,12 +4,12 @@ import { EXPERIENCE } from '@lib/Data.ts'
 ---
 
 <section id="Experience" class="mt-10 px-5 sm:px-24">
-  <h1
+  <h2
     id="titles"
-    class="font-bold font-knewave text-5xl flex md:text-8xl mb-14 tracking-wide transform rotate-2"
+    class="font-bold font-knewave text-5xl flex md:text-7xl mb-14 tracking-wide"
   >
     Experiencia
-  </h1>
+  </h2>
 
   {
     EXPERIENCE.map(
@@ -32,22 +32,22 @@ import { EXPERIENCE } from '@lib/Data.ts'
 
           <div
             id={`entry-content-${index}`}
-            class="opacity-0 bg-amber-50/10 hover:bg-amber-50/15 p-10 rounded-xl transition-all duration-1000 ease-in-out"
+            class="opacity-0  hover:bg-amber-50/5 p-10 rounded-xl transition-all duration-1000 ease-in-out"
           >
             <a href={link}>
               <h3 class="font-bold text-3xl">
-                {title} |<span class="ml">{company}</span>
+                {title} |<span class="ml-1">{company}</span>
               </h3>
-              <span style="color: #a5a5a5; font-family: Karla, sans-serif;">
-                {date}
-              </span>
-              {description.map((desc) => (
-                <p class="mt-3 mb-5 text-lg sm:text-xl ">{desc}</p>
-              ))}
-              {tecnologies.map(({ name, icon: Icon }) => (
-                <Tecnologies name={name} icon={Icon} />
-              ))}
             </a>
+            <span class="text-[#707d9b] font-semibold">
+              {date}
+            </span>
+            {description.map((desc) => (
+              <p class="mt-3 mb-5 text-lg sm:text-lg ">{desc}</p>
+            ))}
+            {tecnologies.map(({ name, icon: Icon }) => (
+              <Tecnologies name={name} icon={Icon} />
+            ))}
           </div>
         </li>
       )
@@ -70,7 +70,7 @@ import { EXPERIENCE } from '@lib/Data.ts'
     background: var(--splash);
     color: var(--black);
     font-size: 18px;
-    font-weight: bold;
+    /* font-weight: bold; */
     width: 50px;
     text-align: center;
     border-radius: 5px;
@@ -90,7 +90,7 @@ import { EXPERIENCE } from '@lib/Data.ts'
 
   EXPERIENCE.forEach((_, index) => {
     const sequence = [
-      [`#entry-track-${index}`, { opacity: 1 }, { duration: 1 }],
+      [`#entry-track-${index}`, { opacity: 1 }, { duration: 2 }],
       [`#entry-content-${index}`, { opacity: 1 }, { duration: 2.5 }]
     ]
 
@@ -98,25 +98,26 @@ import { EXPERIENCE } from '@lib/Data.ts'
 
     scroll(onScroll, {
       target: $(`#entry-content-${index}`),
-      offset: ['center end', 'end end']
+      offset: ['start end', 'center center']
     } as ScrollOptions)
 
+    // line progress animation
     const scrollOptions = {
       target: $(`#entry-content-${index}`),
-      offset: ['center end', '-150px']
+      offset: ['100px', 'end end']
     }
 
     scroll(
       animate(`#progress-${index}`, {
-        scaleY: [0, 1]
+        scaleY: [1, 0]
       }),
       scrollOptions as ScrollOptions
     )
   })
-  const optionsTitle = {
-    target: $('#Experience'),
-    offset: ['-400px', '50px']
-  }
+  // const optionsTitle = {
+  //   target: $('#Experience'),
+  //   offset: ['-400px', '50px']
+  // }
 
   // scroll(
   //   animate('#titles', {

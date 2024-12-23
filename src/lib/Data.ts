@@ -122,12 +122,12 @@ export const PROJECTS = [
   },
   {
     name: 'Api Tienda',
-    subtitle: 'API con las operaciones CRUD',
+    subtitle: 'API CON OPERACIONES CRUD',
     link: 'https://github.com/snipgamer1/api-tienda-express',
     image: '/api-tienda.webp',
     description: [
-      'Api que implemente todas las operaciones CRUD (Create, Read, Update, Delete) y siga las buenas prácticas de diseño de API.',
-      'Implementación de mecanismos de seguridad en la API con JWT mediante validación en Expressjs.'
+      'Desarrollé una API RESTful que implementa todas las operaciones CRUD (Create, Read, Update, Delete) siguiendo buenas prácticas de diseño, como el uso de endpoints claros, manejo de códigos de estado HTTP consistentes y validación de datos con middlewares',
+      'Ademas, implementé mecanismos de seguridad con JSON Web Tokens (JWT) para proteger los endpoints, integrando un middleware en Express.js que valida los tokens en cada solicitud. '
     ],
     technologies: [
       {

@@ -4,35 +4,62 @@ import LinkedIn from '@icons/LinkedIn.astro'
 ---
 
 <section
-  class="min-h-[500px] flex items-center justify-evenly w-full flex-col-reverse sm:flex-row
-max-sm:pt-16 max-sm:relative sm:mt-12 px-5 sm:px-24"
+  class="min-h-[500px] flex items-center justify-evenly w-full flex-col-reverse lg:flex-row
+max-sm:pt-16 max-sm:relative sm:mt-12 px-5 sm:px-24 md:mt-20"
 >
   <div class="flex flex-col justify-center items-center space-y-6">
-    <h1 class="font-normal font-knewave text-6xl">Jesús Flores</h1>
-    <p class="text-gray-200 text-2xl font-semibold">
-      Desarrollador de software
-    </p>
-    <p class="text-lg">
-      Desarrollador de software con enfoque en Frontend y experiencia en
-      proyectos tecnológicos innovadores durante mi formación universitaria. He
-      liderado la creación de plataformas de impacto social y empresarial,
-      integrando metodologías ágiles y estrategias de negocio. Mi trayectoria
-      incluye el diseño de aplicaciones escalables.
-    </p>
+    <div class="relative">
+      <h1 class="font-normal font-knewave text-6xl">Jesús Flores</h1>
+      <a
+        href="https://linkedin.com/in/jesusfloresreyes"
+        target="_blank"
+        rel="noopener"
+        class="flex items-center transition md:justify-center md:hover:scale-105 absolute -top-4 -right-20 rotate-6"
+      >
+        <div class="flex items-center ">
+          <span
+            class="relative inline-flex overflow-hidden rounded-full p-[1px]"
+          >
+            <span
+              class="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#51E4B8_0%,#21554E_50%,#51E4B8_100%)]"
+            ></span>
+            <div
+              class="inline-flex items-center justify-center w-full px-3 py-1 text-sm text-green-800 bg-green-100 rounded-full cursor-pointer dark:bg-gray-800 dark:text-white/80 backdrop-blur-3xl whitespace-nowrap"
+            >
+              En busca de estadia
+            </div>
+          </span>
+        </div>
+      </a>
+    </div>
+    <h2 class="text-[#707d9b] text-2xl font-semibold">
+      Desarrollador de Software
+    </h2>
+    <div>
+      <p class="text-lg">
+        Con enfoque en Frontend y experiencia en proyectos tecnológicos
+        innovadores durante mi formación universitaria.
+      </p>
+      <p class="text-lg">
+        He liderado la creación de plataformas de impacto social y empresarial,
+        integrando metodologías ágiles y estrategias de negocio. Mi trayectoria
+        incluye el diseño de aplicaciones escalables.
+      </p>
+    </div>
 
     <div class="flex gap-4 items-center">
       <a href="https://github.com/snipgamer1" class="hover:scale-110">
-        <Github class="h-8 w-8" />
+        <Github class="h-12 w-12" />
       </a>
       <a
         href="https://www.linkedin.com/in/jesusfloresreyes/"
         class="hover:scale-110"
       >
-        <LinkedIn class="fill-white h-8 w-8" />
+        <LinkedIn class="h-12 w-12" />
       </a>
       <button
         id="downloadCV"
-        class="group relative inline-flex h-8 items-center justify-center overflow-hidden rounded-md border-2 border-[#2eff5457] px-2 lg:px-6 font-medium text-neutral-200 transition hover:scale-110"
+        class="group relative inline-flex h-8 items-center justify-center overflow-hidden rounded-md border-2 border-[#ffffffca] p-6 font-medium text-neutral-200 transition hover:scale-110"
         ><span>Descargar CV</span><div
           class="absolute inset-0 flex h-full w-full justify-center [transform:skew(-12deg)_translateX(-100%)] group-hover:duration-1000 group-hover:[transform:skew(-12deg)_translateX(100%)]"
         >
@@ -56,7 +83,7 @@ max-sm:pt-16 max-sm:relative sm:mt-12 px-5 sm:px-24"
       rgba(18, 237, 95, 0.34) 0%,
       rgba(0, 0, 0, 0) 100%
     ); */
-    filter: drop-shadow(0px 20px 20px rgba(72, 225, 125, 0.34));
+    filter: drop-shadow(0px 20px 20px rgba(199, 211, 203, 0.159));
   }
 </style>
 
